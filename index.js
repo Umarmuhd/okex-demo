@@ -1,12 +1,12 @@
 const oks = require("@okfe/okex-node");
 
 const axios = require("axios").default;
-const querystring = require("querystring");
 const crypto = require("crypto");
+require("dotenv").config();
 
-const key = process.env.OKX_API_KEY;
-const passphrase = process.env.OKX_PASSPHRASE;
-const secret = process.env.OKX_SECRET_KEY;
+// const key = process.env.OKX_API_KEY;
+// const passphrase = process.env.OKX_PASSPHRASE;
+// const secret = process.env.OKX_SECRET_KEY;
 
 const signRequest = (method, path, options = {}) => {
   const timestamp = new Date().toISOString();
@@ -37,18 +37,25 @@ const getSignature = (method, relativeURI, opts = {}) => {
 function makeOkexGetCalls() {
   const options = {
     method: "get",
-    url: "https://www.okx.com/api/v5/asset/convert/currencies",
+    url: "https://www.okx.com/api/v5/asset/convert/currency-pair?fromCcy=USDT&toCcy=BTC",
     headers: {
-      ...getSignature("get", "/api/v5/asset/convert/currencies"),
+      ...getSignature(
+        "get",
+        "/api/v5/asset/convert/currency-pair?fromCcy=USDT&toCcy=BTC"
+      ),
       Accept: "application/json",
       "Content-Type": "application/json",
-      //   "x-simulated-trading": 1,
+      // "x-simulated-trading": 1,
     },
+    // data: JSON.stringify({
+    //   baseCcy: "ETH",
+    //   quoteCcy: "USDT",
+    //   side: "buy",
+    //   sz: "30",
+    //   szCcy: "USDT",
+    //   quoteId: "quoterETH-USDT16461885104612381",
+    // }),
   };
-  console.log(
-    "🚀 ~ file: index.js ~ line 48 ~ makeOkexGetCalls ~ options",
-    options
-  );
 
   return axios
     .request(options)

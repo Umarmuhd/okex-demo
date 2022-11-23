@@ -12,6 +12,8 @@
   "dependencies": {
     "@okfe/okex-node": "0.0.52",
     "axios": "^0.22.0",
-    "crypto": "^1.0.1"
+    "crypto": "^1.0.1",
+    "dot-env": "0.0.1",
+    "dotenv": "^16.0.3"
   }
 }
