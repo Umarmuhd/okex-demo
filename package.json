@@ -1,0 +1,17 @@
+{
+  "name": "okex-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@okfe/okex-node": "0.0.52",
+    "axios": "^0.22.0",
+    "crypto": "^1.0.1"
+  }
+}
